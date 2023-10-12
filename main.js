@@ -45,6 +45,8 @@ leftWristY = results[0].pose.leftWrist.y;
 
 function draw(){
     image(video,0,0,600,500);
+    fill("#FF0000")
+    stroke("#00FF00")
 
     if(scoreRightWrist > 0.2) {
         circle(rightWristX,rightWristY-200,20);
@@ -66,8 +68,16 @@ function draw(){
             song.rate(2.5);
      
         } 
+
     }
-    rect(leftWristX,leftWristY,20,20);
+    
+
+    if (scoreLeftWrist > 0.2){
+        rect(leftWristX,leftWristY,20,20);
+        numLeftWrist = (floor(Number(leftWristY)*2))/1000;
+        document.getElementById("volume").innerHTML = "Volume = " + numLeftWrist;
+        song.setVolume(numLeftWrist)
+    }
 }
 
 function reproducir(){
